@@ -3,16 +3,16 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
-//const fs = require("fs");
+const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer")
+const render = require("./lib/htmlRenderer");
 
 let employeeArray = []
 
-console.log("Create an development team! Must include a Manager.")
+console.log("Create an development team starting with the Manager.")
 console.log("Can create any number of Interns and Engineers")
 function createManager(){
     return inquirer.prompt(
@@ -86,11 +86,13 @@ function finishEmployees(){
 } 
 
 createEmployee().then(response =>{
+
     createManager().then(managerAnswer =>{
         const {name, id , email} = response
         const manager = new Manager(name, id, email, managerAnswer.office)
         employeeArray.push(manager)
         newEmployees()
+
         function newEmployees(){
         employeeType().then(EmployeeType =>{
 
@@ -110,14 +112,16 @@ createEmployee().then(response =>{
                         employeeArray.push(engineer)
                         break;
                     }
+
                    finishEmployees().then(promptAnswer =>{
                        if(promptAnswer.continue){
                            newEmployees()
                        }
                        else{
-                           console.log(employeeArray)
-                           //render html
-                           //fs.writefile
+                            const html = render(employeeArray)
+                            fs.writeFile("templates/main.html", html, err =>{
+                                if(err) throw err
+                            })
                        }
                    })
                 })
