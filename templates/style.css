@@ -1,0 +1,9 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixlib=rb-1.2.1&w=1000&q=80);
+    background-attachment: fixed;
+    background-size: cover;
+}
+.card{
+    margin:15px;
+}
+/* plan on adding more css styling in future development*/
