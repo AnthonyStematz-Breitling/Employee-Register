@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+
 
 const render = require("./lib/htmlRenderer");
 
@@ -119,7 +119,7 @@ createEmployee().then(response =>{
                        }
                        else{
                             const html = render(employeeArray)
-                            fs.writeFile("templates/main.html", html, err =>{
+                            fs.writeFile("output/index.html", html, err =>{
                                 if(err) throw err
                             })
                        }
