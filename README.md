@@ -1,4 +1,4 @@
-# Employee Register                 
+# Team Generator                
        
 ## Description
 Command-Line application that takes user input about a work team and creates an html page to clearly display each team memebers information. 
@@ -20,7 +20,7 @@ run npm i Employee-Register
    
    
 ## Demonstration
-https://drive.google.com/file/d/1HRnGTS8l4NZz3dqde6Fb8iuLrO_C3hBo/view
+https://drive.google.com/file/d/1A8G4u9qJZ1hCam--oz4ihrLrT8o-hSHt/view
 
 ## Tests
  run node app.js in order to use the application after running the npm install
